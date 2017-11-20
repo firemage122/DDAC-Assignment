@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>UIA Flight Booking System</h1>
+    <p>Welcome to UIA Flight Booking System (SEA)</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Book Flight</h2>
+        <p>
+            Click here to be redirected to the flight booking page.
+        </p>
+        <p>@Html.ActionLink("Go", "SearchFlight", "Flight", new { area = "" }, new { @class = "navbar-brand" })
+    </div>
+    <div class="col-md-4">
+        
+    </div>
+    <div class="col-md-4">
+        <h2>Contact Us</h2>
+        <p>If you want to know more about us</p>
+        <p>@Html.ActionLink("Go", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })</p>
+    </div>
+</div>

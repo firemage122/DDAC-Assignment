@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WebApplication1.Models.Flight>
+@{
+    ViewBag.Title = "SearchFlight";
+}
+
+<h2>SearchFlightView</h2>
+@using (Html.BeginForm("SearchFlight", "Flight", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-3">
+            <h5>Origin</h5> @Html.TextBox("searcho", null, new { required = "required" })
+        </div>
+        <div class="col-md-3">
+            <h5>Destination</h5> @Html.TextBox("searchd", null, new { required = "required" })
+        </div>
+        <div class="col-md-3">
+            <input type="submit" value="Search" style="padding:10px" />
+        </div>
+    </div>
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Origin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AircraftID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RouteID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FareID)
+        </th>
+        <th></th>
+    </tr>
+
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Flights Found
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Class)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Origin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destination)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FlightDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AircraftID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MealID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RouteID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FareID)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Book", "BookConfirmation", new { area = "" }, new { @class = "navbar-brand" })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
